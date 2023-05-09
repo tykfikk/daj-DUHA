@@ -1,0 +1,110 @@
+from kivy.app import App
+from kivy.uix.label import Label
+from kivy.uix.button import Button
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.textinput import TextInput
+from kivy.uix.floatlayout import FloatLayout
+
+class MainMenu(Screen):
+    def __init__(self, **kwargs):
+        super(MainMenu, self).__init__(**kwargs)
+        layout = FloatLayout
+        crisis_button = Button(text='SYTUACJA KRYZYSOWA',
+                               size_hint=(0.5, 0.4),
+                               pos_hint={'x': 0.25, 'y': 0.05})
+        crisis_button.bind(on_press=self.on_crisis_button_press)
+        self.add_widget(crisis_button)
+        unsure_button = Button(text='NIE WIEM',
+                               size_hint=(0.5, 0.4),
+                               pos_hint={'x': 0.25, 'y': 0.5})
+        unsure_button.bind(on_press=self.on_unsure_button_press)
+        self.add_widget(unsure_button)
+        help_button = Button(text='DZWOŃ PO POMOC',
+                      size_hint=(0.2, 0.2),
+                      pos_hint={'x': 0.8, 'y': 0.8})
+        help_button.bind(on_press=self.on_help_button_press)
+        self.add_widget(help_button)
+        info_button = Button(text='PERSONAL INFO',
+                     size_hint=(0.2, 0.2),
+                     pos_hint = {'x':0.8, 'y': 0.6})
+        info_button.bind(on_press=self.on_info_button_press)
+        self.add_widget(info_button)
+        
+    def on_crisis_button_press(self, instance):
+        if instance.text == 'SYTUACJA KRYZYSOWA':
+            self.manager.current = 'question_screen'
+            
+    def on_info_button_press(self, instance):
+        # Handle the "UZUPEŁNIJ INFORMACJE" button press
+        print('Going to crisis screen')
+
+    def on_unsure_button_press(self, instance):
+        # Handle the "NIE WIEM" button press
+        print('Going to unsure screen')
+
+    def on_help_button_press(self, instance):
+        # Handle the "DZWOŃ PO POMOC" button press
+        print('Calling for help')    
+            
+class QuestionScreen(Screen):
+    def __init__(self, **kwargs):
+        super(QuestionScreen, self).__init__(**kwargs)
+        layout = GridLayout(cols=1, rows=19)
+
+        question1 = Label(text='Jaką substancję zażyłeś?')
+        layout.add_widget(question1)
+        self.name_input = TextInput()
+        layout.add_widget(self.name_input)
+
+        question2 = Label(text='Jeśli brałeś lub piłeś coś jeszcze, napisz co.')
+        layout.add_widget(question2)
+        self.phone_input = TextInput()
+        layout.add_widget(self.phone_input)
+
+        question3 = Label(text='Ile substancji spożyłeś?')
+        layout.add_widget(question3)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question4 = Label(text='W jakim otoczeniu się znajdujesz?')
+        layout.add_widget(question4)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question5 = Label(text='Jestes sam czy są z Tobą ludzie?')
+        layout.add_widget(question5)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question6 = Label(text='Ile substancji spożyłeś?')
+        layout.add_widget(question6)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question7 = Label(text='Czy odczuwasz któreś z poniższych stanów emocjonalnych? Lęk, niepokój, depresja, smutek, złość, agresja, dezorientacja, paranoja')
+        layout.add_widget(question7)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question8 = Label(text='Czy odczuwasz któreś z poniższych stanów fizycznych? Szybsze bicie serca, nudności, wymioty, uczucie nudności, nie mogę zasnąć, zwiększone ciśnienie, zaburzenia mowy, zaburzenia pamięci, zaburzenia koncentracji, zaburzenia równowagi, ból wątroby, niedowład rąk, drżenie ciała, drgawki, chwilowe utraty świadomości')
+        layout.add_widget(question8)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question9 = Label(text='Czy odczuwasz jakieś inne stany emocjonalne lub fizyczne?')
+        layout.add_widget(question9)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+
+        self.add_widget(layout)
+        
+class DUHA(App):
+    def build(self):
+        screen_manager = ScreenManager()
+        screen_manager.add_widget(MainMenu(name='main_menu'))
+        screen_manager.add_widget(QuestionScreen(name='question_screen'))
+        return screen_manager
+
+if __name__ == '__main__':
+    DUHA().run()
