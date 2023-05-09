@@ -1,0 +1,84 @@
+from kivy.app import App
+from kivy.uix.label import Label
+from kivy.uix.button import Button
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.textinput import TextInput
+
+class MainMenu(Screen):
+    def __init__(self, **kwargs):
+        super(MainMenu, self).__init__(**kwargs)
+        layout = GridLayout(cols=1, rows=2)
+        button1 = Button(text='Zadzwoń po pomoc')
+        button1.bind(on_press=self.on_button_press)
+        layout.add_widget(button1)
+        button2 = Button(text='Sytuacja Kryzysowa!')
+        button2.bind(on_press=self.on_button_press)
+        layout.add_widget(button2)
+        self.add_widget(layout)
+        
+    def on_button_press(self, instance):
+        if instance.text == 'Sytuacja Kryzysowa!':
+            self.manager.current = 'question_screen'
+            
+class QuestionScreen(Screen):
+    def __init__(self, **kwargs):
+        super(QuestionScreen, self).__init__(**kwargs)
+        layout = GridLayout(cols=1, rows=19)
+
+        question1 = Label(text='Jaką substancję zażyłeś?')
+        layout.add_widget(question1)
+        self.name_input = TextInput()
+        layout.add_widget(self.name_input)
+
+        question2 = Label(text='Jeśli brałeś lub piłeś coś jeszcze, napisz co.')
+        layout.add_widget(question2)
+        self.phone_input = TextInput()
+        layout.add_widget(self.phone_input)
+
+        question3 = Label(text='Ile substancji spożyłeś?')
+        layout.add_widget(question3)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question4 = Label(text='W jakim otoczeniu się znajdujesz?')
+        layout.add_widget(question4)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question5 = Label(text='Jestes sam czy są z Tobą ludzie?')
+        layout.add_widget(question5)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question6 = Label(text='Ile substancji spożyłeś?')
+        layout.add_widget(question6)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question7 = Label(text='Czy odczuwasz któreś z poniższych stanów emocjonalnych? Lęk, niepokój, depresja, smutek, złość, agresja, dezorientacja, paranoja')
+        layout.add_widget(question7)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question8 = Label(text='Czy odczuwasz któreś z poniższych stanów fizycznych? Szybsze bicie serca, nudności, wymioty, uczucie nudności, nie mogę zasnąć, zwiększone ciśnienie, zaburzenia mowy, zaburzenia pamięci, zaburzenia koncentracji, zaburzenia równowagi, ból wątroby, niedowład rąk, drżenie ciała, drgawki, chwilowe utraty świadomości')
+        layout.add_widget(question8)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+        
+        question9 = Label(text='Czy odczuwasz jakieś inne stany emocjonalne lub fizyczne?')
+        layout.add_widget(question9)
+        self.address_input = TextInput()
+        layout.add_widget(self.address_input)
+
+        self.add_widget(layout)
+        
+class DUHA(App):
+    def build(self):
+        screen_manager = ScreenManager()
+        screen_manager.add_widget(MainMenu(name='main_menu'))
+        screen_manager.add_widget(QuestionScreen(name='question_screen'))
+        return screen_manager
+
+if __name__ == '__main__':
+    DUHA().run()
