@@ -425,6 +425,18 @@ class InfoScreen(Screen):
 
         
         self.add_widget(layout)
+    
+    def submit_answers_person_info(self, instance):
+        # Get the user's responses from the text input fields
+        inputs_pi = ('wiek: ' + self.question1_pi_input.text + '\n' +
+                  'waga: ' + self.question2_pi_input.text + '\n' +
+                  'wzrost' + self.question3_pi_input.text + '\n' +
+                  'bezpieczne miejsce: '+self.question8_pi_input.text + '\n' +
+                  'osoba zaufana [nr telefonu]: ' + self.question9_pi_input.text + '\n' +
+                  'wspomnienie z dzieciństwa: ' + self.question10_pi_input.text)
+                  
+         #generowanie wywiadu dla ratownika         
+         print("Wygenerowany wywiad dla ratownika: \n" + inputs_pi)
        
     def on_back_button_press(self, instance):
         if instance.text == 'Powrót':
