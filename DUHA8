@@ -118,6 +118,10 @@ class QuestionScreen(Screen):
 
         self.add_widget(layout)
         
+        submit_button = Button(text='Submit')
+        submit_button.bind(on_press=self.submit_answers)
+        layout.add_widget(submit_button)
+        
     def submit_answers(self, instance):
         # Get the user's responses from the text input fields
         inputs = ('zażyłem ' + self.question1_input.text + ',' +
