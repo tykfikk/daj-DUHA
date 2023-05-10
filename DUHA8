@@ -70,7 +70,12 @@ class QuestionScreen(Screen):
     def __init__(self, **kwargs):
         super(QuestionScreen, self).__init__(**kwargs)
         layout = GridLayout(cols=1, rows=19)
-
+        back_button = Button(text="Powrót", 
+                              size_hint=(0.05, 0.05),
+                              pos_hint={'x': 0.05, 'y': 0.05})
+        back_button.bind(on_press=self.on_back_button_press)
+        self.add_widget(back_button)
+        
         question1 = Label(text='Jaką substancję zażyłeś?')
         layout.add_widget(question1)
         self.question1_input = TextInput()
@@ -122,6 +127,10 @@ class QuestionScreen(Screen):
         submit_button.bind(on_press=self.submit_answers)
         layout.add_widget(submit_button)
         
+    def on_back_button_press(self, instance):
+        if instance.text == 'Powrót':
+            self.manager.current = 'main_menu'
+            
     def submit_answers(self, instance):
         # Get the user's responses from the text input fields
         inputs = ('zażyłem ' + self.question1_input.text + ',' +
@@ -156,7 +165,12 @@ class InfoScreen(Screen):
     def __init__(self, **kwargs):
         super(InfoScreen, self).__init__(**kwargs)
         layout = GridLayout(cols=1, rows=70)
-
+        back_button = Button(text="Powrót", 
+                              size_hint=(0.05, 0.05),
+                              pos_hint={'x': 0.05, 'y': 0.01})
+        back_button.bind(on_press=self.on_back_button_press)
+        self.add_widget(back_button)
+        
         question1_pi = Label(text='1. Podaj swój wiek')
         layout.add_widget(question1_pi)
         self.question1_pi_input = TextInput()
@@ -402,8 +416,11 @@ class InfoScreen(Screen):
         layout.add_widget(self.memory_input)
 
         
-        self.add_widget(layout)    
-        
+        self.add_widget(layout)
+       
+    def on_back_button_press(self, instance):
+        if instance.text == 'Powrót':
+            self.manager.current = 'main_menu'        
      
     
         
