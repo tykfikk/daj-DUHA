@@ -401,6 +401,9 @@ class InfoScreen(Screen):
         self.memory_input=TextInput()
         layout.add_widget(self.memory_input)
 
+        submit_pi_button = Button(text='Submit')
+        submit_pi_button.bind(on_press=self.submit_answers)
+        layout.add_widget(submit_pi_button)
         
         self.add_widget(layout)    
         
