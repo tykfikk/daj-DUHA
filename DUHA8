@@ -48,7 +48,11 @@ class MainMenu(Screen):
                      pos_hint = {'x':0.8, 'y': 0.6})
         info_button.bind(on_press=self.on_info_button_press)
         self.add_widget(info_button)
-        
+        kac_button = Button(text="KAC RATUNEK",
+                            size_hint=(0.2,0.2),
+                            pos_hint={'x':0.0, 'y':0.8})
+        kac_button.bind(on_press=self.on_kac_button_press)
+        self.add_widget(kac_button)        
 
     def on_crisis_button_press(self, instance):
         if instance.text == 'SYTUACJA KRYZYSOWA':
@@ -65,6 +69,10 @@ class MainMenu(Screen):
     def on_help_button_press(self, instance):
         # Handle the "DZWOŃ PO POMOC" button press
         print('Calling for help')    
+        
+    def on_kac_button_press(self, instance):
+        if instance.text == 'KAC RATUNEK':
+            self.manager.current = 'kac_screen'
             
 class QuestionScreen(Screen):
     def __init__(self, **kwargs):
@@ -430,6 +438,7 @@ class DUHA(App):
         screen_manager.add_widget(MainMenu(name='main_menu'))
         screen_manager.add_widget(QuestionScreen(name='question_screen'))
         screen_manager.add_widget(InfoScreen(name='info_screen'))
+        screen_manager.add_widget(KacScreen(name='kac_screen'))        
         return screen_manager
 
 if __name__ == '__main__':
