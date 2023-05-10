@@ -1,0 +1,71 @@
+import tkinter as tk
+from tkinter import *
+
+window = Tk()
+
+window.title("PORADNIK")
+window.geometry('350x500')
+window.config(bg="skyblue")
+
+text_variable = tk.StringVar(value="")
+label = tk.Label(window, textvariable=text_variable)
+label.place(x=10, y=70)
+
+obraz1 = tk.Canvas(window, width=250, height=200)
+obraz1.place(x=50, y=240)
+
+
+# text_variable.set()
+
+def add_obraz(image_file):
+    obraz1.delete("all")
+    image = tk.PhotoImage(file=image_file)
+    obraz1.create_image(125, 100, image=image)
+    obraz1.image = image
+
+
+def add_tekst(tekst):
+    text_variable.set(tekst)
+
+
+add_obraz("laka.png")
+add_tekst("""Jeśli czujesz się niedobrze 
+                 po zażyciu substancji
+                 psychoaktywnej, nie jesteś sam. 
+                 Ważne jest, aby zrozumieć,
+                 jak narkotyki i alkohol wpływają 
+                 na Twoje ciało i umysł oraz 
+                 jak możesz skutecznie zarządzać
+                 objawami. Nasza aplikacja pomoże
+                 Ci nauczyć się technik,które 
+                 pozwolą Ci unormować swoje procesy 
+                 poznawcze i fizjologiczne,
+                 abyś mógł poczuć się lepiej w 
+                 kryzysowej sytuacji.""")
+
+
+def funkcja1():
+    add_obraz("oddech.png")
+    add_tekst("""Skupienie się na swoim 
+    oddechu i kontrolowanie 
+    go może pomóc w uspokojeniu 
+    się i zredukowaniu objawów lękowych.
+    Skupiając się na oddychaniu, 
+    możesz zmniejszyć stres i 
+    wprowadzić swoje ciało
+    w stan relaksu.""")
+    btn.destroy()
+    btn2 = Button(window, text="Dalej", command=funkcja2)
+    btn2.place(x=160, y=460)
+
+
+def funkcja2():
+    add_obraz("sudoku.png")
+    add_tekst("""Odwracanie uwagi może być przydatnym 
+    mechanizmem radzenia sobie z trudnymi emocjami.""")
+
+
+btn = Button(window, text="Dalej", command=funkcja1)
+btn.place(x=160, y=460)
+
+window.mainloop()
