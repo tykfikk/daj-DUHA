@@ -73,47 +73,47 @@ class QuestionScreen(Screen):
 
         question1 = Label(text='Jaką substancję zażyłeś?')
         layout.add_widget(question1)
-        self.name_input = TextInput()
+        self.question1_input = TextInput()
         layout.add_widget(self.name_input)
 
         question2 = Label(text='Jeśli brałeś lub piłeś coś jeszcze, napisz co.')
         layout.add_widget(question2)
-        self.phone_input = TextInput()
+        self.question2_input = TextInput()
         layout.add_widget(self.phone_input)
 
         question3 = Label(text='Ile substancji spożyłeś?')
         layout.add_widget(question3)
-        self.address_input = TextInput()
+        self.question3_input = TextInput()
         layout.add_widget(self.address_input)
         
         question4 = Label(text='W jakim otoczeniu się znajdujesz?')
         layout.add_widget(question4)
-        self.address_input = TextInput()
+        self.question4_input = TextInput()
         layout.add_widget(self.address_input)
         
         question5 = Label(text='Jestes sam czy są z Tobą ludzie?')
         layout.add_widget(question5)
-        self.address_input = TextInput()
+        self.question5_input = TextInput()
         layout.add_widget(self.address_input)
         
         question6 = Label(text='Ile substancji spożyłeś?')
         layout.add_widget(question6)
-        self.address_input = TextInput()
+        self.question6_input = TextInput()
         layout.add_widget(self.address_input)
         
         question7 = Label(text='Czy odczuwasz któreś z poniższych stanów emocjonalnych? Lęk, niepokój, depresja, smutek, złość, agresja, dezorientacja, paranoja')
         layout.add_widget(question7)
-        self.address_input = TextInput()
+        self.question7_input = TextInput()
         layout.add_widget(self.address_input)
         
         question8 = Label(text='Czy odczuwasz któreś z poniższych stanów fizycznych? Szybsze bicie serca, nudności, wymioty, uczucie nudności, nie mogę zasnąć, zwiększone ciśnienie, zaburzenia mowy, zaburzenia pamięci, zaburzenia koncentracji, zaburzenia równowagi, ból wątroby, niedowład rąk, drżenie ciała, drgawki, chwilowe utraty świadomości')
         layout.add_widget(question8)
-        self.address_input = TextInput()
+        self.question8_input = TextInput()
         layout.add_widget(self.address_input)
         
         question9 = Label(text='Czy odczuwasz jakieś inne stany emocjonalne lub fizyczne?')
         layout.add_widget(question9)
-        self.address_input = TextInput()
+        self.question9_input = TextInput()
         layout.add_widget(self.address_input)
 
         self.add_widget(layout)
@@ -159,17 +159,17 @@ class InfoScreen(Screen):
 
         question1_pi = Label(text='1. Podaj swój wiek')
         layout.add_widget(question1_pi)
-        self.age_input = TextInput()
+        self.question1_pi_input = TextInput()
         layout.add_widget(self.age_input)
 
         question2_pi = Label(text='2. Podaj swoją wagę w kilogramach')
         layout.add_widget(question2_pi)
-        self.weight_input = TextInput()
+        self.question2_pi_input = TextInput()
         layout.add_widget(self.weight_input)
 
         question3_pi = Label(text='3. Podaj swój wzrost w centymetrach')
         layout.add_widget(question3_pi)
-        self.height_input = TextInput()
+        self.question3_pi_input = TextInput()
         layout.add_widget(self.height_input)
         
         question4_pi = Label(text='4. Jak często sięgasz po substancje odurzające (alkohol i/lub narkotyki)?')
@@ -388,41 +388,23 @@ class InfoScreen(Screen):
 
         question8_pi= Label(text='8. W jakim miejscu najbardziej lubisz spędzać czas?')
         layout.add_widget(question8_pi)
-        self.place_input=TextInput()
+        self.question8_pi_input=TextInput()
         layout.add_widget(self.place_input)
 
         question9_pi= Label(text='9. Kto jest Twoją najbardziej zaufaną osobą, przy której czujesz się komfortowo?')
         layout.add_widget(question9_pi)
-        self.person_input=TextInput()
+        self.question9_pi_input=TextInput()
         layout.add_widget(self.person_input)
 
         question10_pi= Label(text='10. Jakie jest Twoje ulubione wspomnienie z dzieciństwa? Proszę, opisz je')
         layout.add_widget(question10_pi)
-        self.memory_input=TextInput()
+        self.question10_pi_input=TextInput()
         layout.add_widget(self.memory_input)
 
-        submit_pi_button = Button(text='Submit')
-        submit_pi_button.bind(on_press=self.submit_answers)
-        layout.add_widget(submit_pi_button)
         
         self.add_widget(layout)    
         
-        
-    def submit_answers_person_info(self, instance):
-        # Get the user's responses from the text input fields
-        inputs_pi = (self.question1_pi_input.text + ',' +
-                  self.question2_pi_input.text + ',' +
-                  self.question3_pi_input.text + ',' +
-                  self.question4_pi_input.text + ',' +
-                  self.question5_pi_input.text + ',' +
-                  self.question6_pi_input.text + ',' +
-                  self.question7_pi_input.text + ',' +
-                  self.question8_pi_input.text + ', ' +
-                  self.question9_pi_input.text + ',' +
-                  self.question10_pi_input.text)
-    
-        print(inputs_pi)
-    
+     
     
         
 class DUHA(App):
