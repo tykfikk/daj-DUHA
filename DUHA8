@@ -9,7 +9,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.checkbox import CheckBox
 import openai 
 
-openai.api_key = ('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')
+openai.api_key = ('API_KEY')
 
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
